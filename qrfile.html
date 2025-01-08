@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASU Medical Systems</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .content {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .services, .reviews, .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eaf4ff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .services button, .feedback button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .services button:hover, .feedback button:hover {
+            background-color: #0056b3;
+        }
+        input, textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ASU Medical Systems Web Application</h1>
+        <p>Empowering Ayurveda, Unani, and Siddha Medicine</p>
+    </header>
+    <div class="content">
+        <h2>Welcome!</h2>
+        <p>Explore books, check availability, verify QR codes, find bookstores, and share your feedback.</p>
+        
+        <div class="services">
+            <h3>Available Services</h3>
+            <button onclick="checkBooks()">Books Available</button>
+            <button onclick="accessEbooks()">Online Books</button>
+            <button onclick="verifyQR()">QR Code Verification</button>
+            <button onclick="listBookstores()">Nearby Bookstores</button>
+        </div>
+
+        <div id="service-output" style="margin-top: 20px; padding: 15px; background: #fff; border-radius: 10px; display: none;"></div>
+
+        <div class="reviews">
+            <h3>Book Reviews</h3>
+            <p id="reviews-section">No reviews yet. Be the first to add one!</p>
+        </div>
+
+        <div class="feedback">
+            <h3>Submit Your Feedback</h3>
+            <textarea id="feedback-input" rows="5" placeholder="Write your feedback here..."></textarea>
+            <button onclick="submitFeedback()">Submit Feedback</button>
+        </div>
+    </div>
+
+    <script>
+        function checkBooks() {
+            const serviceOutput = document.getElementById("service-output");
+            serviceOutput.style.display = "block";
+            serviceOutput.innerHTML = "<h3>Books Available</h3><p>The following books are available:</p><ul><li>Ayurveda Basics</li><li>Unani Practices</li><li>Siddha Healing Techniques</li><li>Comprehensive Herbal Medicine</li></ul>";
+        }
+
+        function accessEbooks() {
+            const serviceOutput = document.getElementById("service-output");
+            serviceOutput.style.display = "block";
+            serviceOutput.innerHTML = "<h3>Online Books</h3><p>Access our collection of e-books:</p><ul><li><a href='#'>Ayurveda: The Science of Life</a></li><li><a href='#'>Unani: Fundamentals and Practices</a></li><li><a href='#'>Siddha Medicine for Beginners</a></li></ul>";
+        }
+
+        function verifyQR() {
+            const serviceOutput = document.getElementById("service-output");
+            const isValid = confirm("Is your QR code verified? Click OK if yes.");
+            serviceOutput.style.display = "block";
+            if (isValid) {
+                serviceOutput.innerHTML = "<h3>QR Code Verified</h3><p>Your QR code is valid. Welcome to the ASU portal!</p>";
+            } else {
+                serviceOutput.innerHTML = "<h3>QR Code Not Verified</h3><p>Please verify your QR code with the library admin.</p>";
+            }
+        }
+
+        function listBookstores() {
+            const serviceOutput = document.getElementById("service-output");
+            serviceOutput.style.display = "block";
+            serviceOutput.innerHTML = "<h3>Nearby Bookstores</h3><p>Find bookstores near you:</p><ul><li>Herbal Book House - 1 km away</li><li>Siddha Text Hub - 3 km away</li><li>Unani Book Mart - 5 km away</li></ul>";
+        }
+
+        function submitFeedback() {
+            const feedbackInput = document.getElementById("feedback-input").value.trim();
+            if (feedbackInput) {
+                alert("Thank you for your feedback!");
+                document.getElementById("feedback-input").value = "";
+            } else {
+                alert("Please write some feedback before submitting.");
+            }
+        }
+    </script>
+</body>
+</html>
